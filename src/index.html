@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ElevarTeste</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" />
+</head>
+<body>
+  <app-root>
+    <!-- lista-produto.component.html -->
+<button (click)="ngOnInit()">Carregar Produtos</button>
+
+<div *ngFor="let product of products">
+  <h2>{{ product.titulo }}</h2>
+  <p>{{ product.descricao }}</p>
+  <p>Preço: {{ product.valor | currency }}</p>
+</div>
+  
+  </app-root>
+</body>
+</html>
