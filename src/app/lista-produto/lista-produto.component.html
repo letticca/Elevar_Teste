@@ -1,7 +1,15 @@
 <button (click)="getProducts()">Carregar Produtos</button>
-
+<!--
 <div *ngFor="let product of products">
   <h2>{{ product.titulo }}</h2>
   <p>{{ product.descricao }}</p>
   <p>Preço: {{ product.valor | currency }}</p>
-</div>
+</div> -->
+
+
+<form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+  <label for="codigo">Código do Produto:</label>
+  <input id="codigo" formControlName="codigo" type="number">
+
+  <button type="submit">Buscar Produto</button>
+</form>

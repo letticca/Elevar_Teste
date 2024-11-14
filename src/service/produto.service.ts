@@ -9,16 +9,13 @@ import { Product } from 'src/model/Iprodutos';
 export class ProductService {
 
   constructor(private http: HttpClient) { }
-  private const apiPath = 'http:/localhost:3000/produtos';
+  //private const apiPath = 'http:/localhost:3000/produtos';
 
   getProducts(): Observable<any> {
       return this.http.get<Product[]>("assets/produtos.json");
   }
 
-  obterPorCodigo(codigo: number): Observable<Product | undefined> {
-    return this.getProducts().pipe(
-      map((produtos) => produtos.find(produto => produto.codigo === codigo))
-    );
+
     // obterPorCodigo(id: number) {
     //   return this.HttpClient.get<Product>("assets/produtos.json".{codigo}).toPromise();
     // }
