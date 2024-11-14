@@ -15,14 +15,18 @@ import { FormGroup, FormControl, FormsModule } from '@angular/forms';
 
 
 export class ListaProdutoComponent implements OnInit {
-  pesquisaForm! : FormGroup;
+  formGroup! : FormGroup;
   products: Product[] = [];
+  produtosFiltrados: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     console.log("Chega aqui");
-    this.pesquisaForm = new FormGroup({})
+    this.formGroup = new FormGroup ({
+      input : new FormControl(' ')
+    })
+
 
 
   }
@@ -39,33 +43,45 @@ export class ListaProdutoComponent implements OnInit {
       }
 
     )
+  }
+  filtrar(): void {
+    const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
 
-    buscarCodigo() {
-      // Obtém o valor do campo "codigo" do formulário
-      const codigo = this.pesquisaForm.get('codigo')?.value;
+    this.produtosFiltrados = this.products.filter(produto =>
+      produto.titulo.toLowerCase().includes(filtro)
+    );
 
-      // Verifica se o código está definido e chama o serviço para obter os produtos
-      if (codigo) {
-        this.productService.getProducts().subscribe((produtos) => {
-          // Procura o produto que corresponde ao código inserido no formulário
-          const produtoEncontrado = produtos.find(produto => produto.codigo === codigo);
+    console.log('Produtos filtrados:', this.produtosFiltrados);
+  }
+}
+    // produto: Produto[] = [];
+    // produtosFiltrados: Produto[] = [];
+    // formGroup!: FormGroup;
 
-          if (produtoEncontrado) {
-            console.log('Produto encontrado:', produtoEncontrado);
-          } else {
-            console.log('Produto não encontrado');
-          }
-        });
-      } else {
-        console.log('Por favor, insira um código válido');
-      }
-    }
-    
-    }
+    // constructor() {}
+
+    // ngOnInit(): void {
+    //   this.formGroup = new FormGroup({
+    //     input: new FormControl('')
+    //   })
+
+    //   this.adicionarProduto()
+    // }
+
+    // filtrar(): void {
+    //   const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
+
+    //   this.produtosFiltrados = this.produto.filter(produto =>
+    //     produto.titulo.toLowerCase().includes(filtro)
+    //   );
+
+    //   console.log('Produtos filtrados:', this.produtosFiltrados);
+    // }
+    // }
 
     // obterProdutoPorCodigo(id: number): void {
     //   this.productService.getProductById(id).subscribe(product => {
     //     this.produtoSelecionado = product;
     //     console.log(this.produtoSelecionado); // Exibe o produto no console
     //   });
-    }
+
