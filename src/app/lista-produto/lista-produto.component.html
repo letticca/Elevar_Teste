@@ -1,9 +1,7 @@
-<!-- lista-produto.component.html -->
-<button (click)="ngOnInit()">Carregar Produtos</button>
+<button (click)="getProducts()">Carregar Produtos</button>
 
 <div *ngFor="let product of products">
   <h2>{{ product.titulo }}</h2>
   <p>{{ product.descricao }}</p>
   <p>Preço: {{ product.valor | currency }}</p>
 </div>
-  

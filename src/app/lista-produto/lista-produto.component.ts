@@ -1,6 +1,7 @@
 
 import { ProductService } from 'src/service/produto.service';
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/model/Iprodutos';
 
 
 @Component({
@@ -13,19 +14,35 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class ListaProdutoComponent implements OnInit {
-  products: any[] = [];
+  products: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    console.log("PUTA QUE PARIUUUUUU");
-    this.productService.getProducts().subscribe(
-      (data) => {
-        this.products = data;
-      },
-      (error) => {
-        console.error('Erro ao carregar os produtos:', error);
-      }
-    );
+    console.log("Chega aqui");
+
   }
+
+  getProducts() {
+
+    this.productService.getProducts().subscribe(
+      data => {
+        this.products = data
+        console.log(data)
+      },
+      err => {
+        console.log(err)
+      }
+
+    )
+
+    // obterProdutoPorCodigo(id: number): void {
+    //   this.productService.getProductById(id).subscribe(product => {
+    //     this.produtoSelecionado = product;
+    //     console.log(this.produtoSelecionado); // Exibe o produto no console
+    //   });
+    // }
+  }
+
+
 }
