@@ -28,4 +28,8 @@ export interface Product {
   titulo: string;
   valor: number;
   gruposCategoria: { descricao: string; id: number }[];
+  referencia: string;
+  destaque: boolean;
+  imgTopo: string;
+
 }

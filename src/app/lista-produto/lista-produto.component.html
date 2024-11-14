@@ -7,24 +7,17 @@
 </div> -->
 
 
-<!-- <div [formGroup]="formGroup">
-  <input type="text" formControlName="input">
-
-  <button (click)="filtrar()">Filtrar</button>
-
-  <div *ngFor="let produto of produtosFiltrados">
-    <h2>{{ produto.titulo }}</h2>
-    <p>{{ produto.descricao }}</p>
-    <p>Preço: {{ produto.valor | currency }}</p>
-    <p>Promoção: {{ produto.promocao ? 'Sim' : 'Não' }}</p>
-    <img [src]="produto.imgTopo" alt="{{ produto.titulo }}" width="100">
-  </div>
-</div> -->
-
 
 <div> <div [formGroup]="formGroup">
   <input type="text" formControlName="input"> </div>
-  <button (click)="filtrar()">Filtrar</button>
+  <button (click)="filtrarNome()">Filtrar</button>
   <div *ngFor="let produto of produtosFiltrados">
+    <h2> {{ produto.codigo}} </h2>
+    <p>{{ produto.descricao }}</p>
+    <p>Preço: {{ produto.valor | currency }}</p>
+    <p>Promoção: {{ produto.promocao ? 'Sim' : 'Não' }}</p>
+    <img [src]="produto.imgTopo" alt="{{ produto.descricao }}" width="100">
+
+  </div>
 
 

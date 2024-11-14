@@ -31,57 +31,31 @@ export class ListaProdutoComponent implements OnInit {
 
   }
 
-  getProducts() {
+    getProducts() {
 
-    this.productService.getProducts().subscribe(
-      data => {
-        this.products = data
-        console.log(data)
-      },
-      err => {
-        console.log(err)
-      }
+      this.productService.getProducts().subscribe(
+        data => {
+          this.products = data
+          console.log(data)
+        },
+        err => {
+          console.log(err)
+        }
 
-    )
-  }
-  filtrar(): void {
-    const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
+      )
+    }
 
-    this.produtosFiltrados = this.products.filter(produto =>
-      produto.titulo.toLowerCase().includes(filtro)
-    );
 
-    console.log('Produtos filtrados:', this.produtosFiltrados);
-  }
+    filtrarNome(): void {
+      const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
+
+      this.produtosFiltrados = this.products.filter(produto =>
+        produto.codigo.toLowerCase().includes(filtro)
+      );
+
+
+      console.log('Produtos filtrados:', this.produtosFiltrados);
+    }
 }
-    // produto: Produto[] = [];
-    // produtosFiltrados: Produto[] = [];
-    // formGroup!: FormGroup;
 
-    // constructor() {}
-
-    // ngOnInit(): void {
-    //   this.formGroup = new FormGroup({
-    //     input: new FormControl('')
-    //   })
-
-    //   this.adicionarProduto()
-    // }
-
-    // filtrar(): void {
-    //   const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
-
-    //   this.produtosFiltrados = this.produto.filter(produto =>
-    //     produto.titulo.toLowerCase().includes(filtro)
-    //   );
-
-    //   console.log('Produtos filtrados:', this.produtosFiltrados);
-    // }
-    // }
-
-    // obterProdutoPorCodigo(id: number): void {
-    //   this.productService.getProductById(id).subscribe(product => {
-    //     this.produtoSelecionado = product;
-    //     console.log(this.produtoSelecionado); // Exibe o produto no console
-    //   });
 
