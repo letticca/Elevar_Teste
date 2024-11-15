@@ -24,7 +24,9 @@ export class ListaProdutoComponent implements OnInit {
   ngOnInit(): void {
     console.log("Chega aqui");
     this.formGroup = new FormGroup ({
-      input : new FormControl(' ')
+      input : new FormControl(' '),
+      precoMin: new FormControl(' '),
+      precoMax :new FormControl(' ')
     });
     this.getProducts();
 
@@ -89,9 +91,20 @@ export class ListaProdutoComponent implements OnInit {
           // Se o input não for "ativo" ou "inativo", exibe todos os produtos
           this.produtosFiltrados = this.products;
       }
-
       console.log('Produtos filtrados:', this.produtosFiltrados);
   }
+
+  filtrarPorPreco(): void {
+    const precoMin = this.formGroup.get('precoMin')?.value || 0;
+    const precoMax = this.formGroup.get('precoMax')?.value || Infinity;
+
+    this.produtosFiltrados = this.products.filter(produto =>
+        produto.valor >= precoMin && produto.valor <= precoMax
+    );
+
+    console.log('Produtos filtrados por preço:', this.produtosFiltrados);
+}
+
 
 
 }

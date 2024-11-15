@@ -1,28 +1,3 @@
-<!-- <button (click)="getProducts()">Carregar Produtos</button> -->
-<!--
-<div *ngFor="let product of products">
-  <h2>{{ product.titulo }}</h2>
-  <p>{{ product.descricao }}</p>
-  <p>Preço: {{ product.valor | currency }}</p>
-</div> -->
-
-
-<!-- <h2> Pesquisa Por Nome</h2>
-<div> <div [formGroup]="formGroup">
-  <input type="text" formControlName="input"> </div>
-  <button (click)="filtrarNome()">Filtrar</button>
-  <div *ngFor="let produto of produtosFiltrados">
-    <h2> {{ produto.titulo}} </h2>
-    <p>{{ produto.descricao }}</p>
-    <p>Preço: {{ produto.valor | currency }}</p>
-    <p>Promoção: {{ produto.promocao ? 'Sim' : 'Não' }}</p>
-    <img [src]="produto.imgTopo" alt="{{ produto.descricao }}" width="100">
-  </div>
- -->
-
-
-
-
 
  <h2>Pesquisa Por Nome</h2>
  <div [formGroup]="formGroup">
@@ -32,9 +7,17 @@
 
  <h2>Pesquisa Por Status</h2>
 <div [formGroup]="formGroup">
-  <input type="text" formControlName="input" placeholder="Digite o nome do produto">
+  <input type="text" formControlName="input" placeholder="Digite o status">
 </div>
 <button (click)="filtrarStatus()">Filtrar Status</button>
+
+<h2>Pesquisa Por Preço</h2>
+<div [formGroup]="formGroup">
+    <input type="number" formControlName="precoMin">
+    <input type="number" formControlName="precoMax">
+</div>
+<button (click)="filtrarPorPreco()">Filtrar Preço</button>
+
 
 
  <div *ngFor="let produto of produtosFiltrados">
