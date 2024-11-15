@@ -17,7 +17,7 @@ import { FormGroup, FormControl, FormsModule } from '@angular/forms';
 export class ListaProdutoComponent implements OnInit {
   formGroup! : FormGroup;
   products: Product[] = [];
-  produtosFiltrados: Product[] = [];
+  produtosFiltrados:  any[] = [];
 
   constructor(private productService: ProductService) {}
 
@@ -25,35 +25,53 @@ export class ListaProdutoComponent implements OnInit {
     console.log("Chega aqui");
     this.formGroup = new FormGroup ({
       input : new FormControl(' ')
-    })
-
-
+    });
+    this.getProducts();
 
   }
 
-    getProducts() {
+    // getProducts() {
+    //     this.productService.getProducts().subscribe(
+    //     data => {
+    //       this.products = data
+    //      // this.produtosFiltrados =[...this.products]
+    //       console.log(data)
+    //       console.log(this.produtosFiltrados)
+    //     },
+    //     err => {
+    //       console.log(err)
+    //     }
+    //   )
+    // }
 
+    getProducts() {
       this.productService.getProducts().subscribe(
         data => {
-          this.products = data
-          console.log(data)
+          if (data && Array.isArray(data.produtos)) {  // Verifica se 'data.produtos' é um array
+            this.products = data.produtos;
+            this.produtosFiltrados = [...this.products];
+          } else {
+            console.error("Erro: 'data.produtos' não é um array", data);
+            this.products = [];
+            this.produtosFiltrados = [];
+          }
+          console.log(data);
+          console.log(this.produtosFiltrados);
         },
         err => {
-          console.log(err)
+          console.log(err);
         }
-
-      )
+      );
     }
+
 
 
     filtrarNome(): void {
       const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
 
       this.produtosFiltrados = this.products.filter(produto =>
-        produto.codigo.toLowerCase().includes(filtro)
+        produto.titulo.toLowerCase().includes(filtro)
       );
-
-
       console.log('Produtos filtrados:', this.produtosFiltrados);
     }
 }

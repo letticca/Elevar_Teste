@@ -1,4 +1,4 @@
-{ "produtos" :[
+{ "produtos" : [
     {
         "codigo": "100359",
         "descricao": "Toalhas Umedecidas A Base De Plantas Para Pele Normal Mustel Com 60 Unidades",
@@ -7,7 +7,7 @@
         "promocao": true,
         "qtdEstoque": 17,
         "status": true,
-        "titulo": "Toalhas Umedecidas A Base De Plantas Para Pele Normal Mustel Com 60 Unidades",
+        "titulo": " Umedecidas A Base De Plantas Para PToalhasele Normal Mustel Com 60 Unidades",
         "valor": 42.98,
         "gruposCategoria": [
             {

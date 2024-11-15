@@ -17,17 +17,4 @@ export class ProductService {
   }
 
 
-    // obterPorCodigo(id: number) {
-    //   return this.HttpClient.get<Product>("assets/produtos.json".{codigo}).toPromise();
-    // }
-  //   obterPorCodigo(id: number) {
-  //     return this.http.get<Product>("assets/produtos.json".{codigo}).toPromise();
-  // }
-
-  // obterPorCodigo(id: number): Promise<Product | undefined> {
-  //   return this.HttpClient.get<Product>("assets/produtos.json").toPromise()
-  //     .then((produtos) => produtos.find(produto => produto.codigo === id));
-  // }
-
-
 }
