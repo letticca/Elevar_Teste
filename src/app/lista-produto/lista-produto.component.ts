@@ -74,6 +74,26 @@ export class ListaProdutoComponent implements OnInit {
       );
       console.log('Produtos filtrados:', this.produtosFiltrados);
     }
+
+    filtrarStatus(): void {
+      const filtro = this.formGroup.get('input')?.value?.toLowerCase() || '';
+
+      // Determina o valor booleano com base no input do usuário
+      const statusFiltrado = filtro === 'ativo' ? true : filtro === 'inativo' ? false : null;
+
+      if (statusFiltrado !== null) {
+          this.produtosFiltrados = this.products.filter(produto =>
+              produto.status === statusFiltrado
+          );
+      } else {
+          // Se o input não for "ativo" ou "inativo", exibe todos os produtos
+          this.produtosFiltrados = this.products;
+      }
+
+      console.log('Produtos filtrados:', this.produtosFiltrados);
+  }
+
+
 }
 
 

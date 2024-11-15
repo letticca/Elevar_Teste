@@ -85,7 +85,7 @@
         "precoPromocional": null,
         "promocao": false,
         "qtdEstoque": 20,
-        "status": true,
+        "status": false,
         "titulo": "Protetor Solar La Roche-posay Anthelios Airlicium + Sem Cor Fps80 40g",
         "valor": 75.8,
         "gruposCategoria": [
@@ -110,7 +110,7 @@
         "precoPromocional": null,
         "promocao": false,
         "qtdEstoque": 95,
-        "status": true,
+        "status": false,
         "titulo": "Vult Care Nutritivo - Creme Hidratante Facial 100g",
         "valor": 26.65,
         "gruposCategoria": [
